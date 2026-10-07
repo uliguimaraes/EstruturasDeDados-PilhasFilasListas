@@ -4,9 +4,9 @@ public class Musica {
     private String titulo;
     private String album;
     private String artista;
-    private String duracao;
+    private int duracao;
 
-    public Musica(String titulo, String album, String artista, String duracao) {
+    public Musica(String titulo, String album, String artista, int duracao) {
         this.titulo = titulo;
         this.album = album;
         this.artista = artista;
@@ -25,12 +25,13 @@ public class Musica {
         return artista;
     }
 
-    public String getDuracao() {
+    public int getDuracao() {
         return duracao;
     }
 
     @Override
     public String toString() {
-        return "Título: " + titulo + " | Artista: " + artista + " | Álbum: " + album + " | Duração: " + duracao;
+        return "Título: " + titulo + " | Artista: " + artista + " | Álbum: " + album
+                + " | Duração: " + duracao + " segundos";
     }
 }

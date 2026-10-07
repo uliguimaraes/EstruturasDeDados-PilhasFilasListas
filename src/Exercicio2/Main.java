@@ -44,25 +44,41 @@ public class Main {
                     String art = scanner.nextLine();
                     System.out.print("Álbum: ");
                     String alb = scanner.nextLine();
-                    System.out.print("Duração (ex: 3:45): ");
-                    String dur = scanner.nextLine();
+                    System.out.print("Duração em segundos: ");
+                    if (!scanner.hasNextInt()) {
+                        scanner.nextLine();
+                        System.out.println("Duração inválida. Informe um número inteiro.");
+                        break;
+                    }
+                    int dur = scanner.nextInt();
+                    scanner.nextLine();
+                    if (dur < 0) {
+                        System.out.println("A duração não pode ser negativa.");
+                        break;
+                    }
 
                     System.out.println("Onde adicionar? (1-Início, 2-Fim, 3-Posição Específica): ");
                     int posOp = scanner.nextInt();
                     scanner.nextLine();
 
                     Musica m = new Musica(t, alb, art, dur);
+                    boolean adicionada;
                     if (posOp == 1) {
                         playlist.adicionarInicio(m);
+                        adicionada = true;
                     } else if (posOp == 3) {
                         System.out.print("Digite o índice (0 a " + playlist.getTamanho() + "): ");
                         int idx = scanner.nextInt();
                         scanner.nextLine();
-                        playlist.adicionarPosicao(idx, m);
-                    } else {
+                        adicionada = playlist.adicionarPosicao(idx, m);
+                    } else if (posOp == 2) {
                         playlist.adicionarFim(m);
+                        adicionada = true;
+                    } else {
+                        System.out.println("Opção de inserção inválida!");
+                        break;
                     }
-                    System.out.println("Música adicionada!");
+                    System.out.println(adicionada ? "Música adicionada!" : "Posição inválida!");
                     break;
 
                 case 5:
@@ -70,14 +86,24 @@ public class Main {
                         System.out.println("Playlist vazia!");
                         break;
                     }
-                    System.out.print("Digite a posição da música a remover (0 a " + (playlist.getTamanho() - 1) + "): ");
-                    int rmIdx = scanner.nextInt();
+                    System.out.println("Remover por: 1-Posição | 2-Título");
+                    int tipoRemocao = scanner.nextInt();
                     scanner.nextLine();
-                    if (playlist.removerPorPosicao(rmIdx)) {
-                        System.out.println("Música removida!");
+                    boolean removida;
+                    if (tipoRemocao == 1) {
+                        System.out.print("Digite a posição da música a remover (0 a "
+                                + (playlist.getTamanho() - 1) + "): ");
+                        int rmIdx = scanner.nextInt();
+                        scanner.nextLine();
+                        removida = playlist.removerPorPosicao(rmIdx);
+                    } else if (tipoRemocao == 2) {
+                        System.out.print("Digite o título da música: ");
+                        removida = playlist.removerPorTitulo(scanner.nextLine());
                     } else {
-                        System.out.println("Posição inválida!");
+                        System.out.println("Opção de remoção inválida!");
+                        break;
                     }
+                    System.out.println(removida ? "Música removida!" : "Música não encontrada ou posição inválida!");
                     break;
 
                 case 6:

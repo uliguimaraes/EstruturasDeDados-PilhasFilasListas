@@ -87,6 +87,22 @@ public class ListaDupla<T> {
         return true;
     }
 
+    // Remove a primeira música encontrada pelo título, sem diferenciar maiúsculas/minúsculas.
+    public boolean removerPorTitulo(String titulo) {
+        if (titulo == null || estaVazia()) return false;
+
+        No<T> aux = inicio;
+        while (aux != null) {
+            if (aux.getDado() instanceof Musica musica
+                    && musica.getTitulo().equalsIgnoreCase(titulo.trim())) {
+                removerNo(aux);
+                return true;
+            }
+            aux = aux.getProximo();
+        }
+        return false;
+    }
+
     private void removerNo(No<T> no) {
         if (no == atual) {
             atual = (no.getProximo() != null) ? no.getProximo() : no.getAnterior();
@@ -157,13 +173,15 @@ public class ListaDupla<T> {
     public void ordenarPorTituloOuArtista(boolean porTitulo) {
         if (tamanho < 2) return;
 
-        for (No<Musica> i = (No<Musica>) inicio; i != null; i = i.getProximo()) {
-            for (No<Musica> j = i.getProximo(); j != null; j = j.getProximo()) {
-                String val1 = porTitulo ? i.getDado().getTitulo() : i.getDado().getArtista();
-                String val2 = porTitulo ? j.getDado().getTitulo() : j.getDado().getArtista();
+        for (No<T> i = inicio; i != null; i = i.getProximo()) {
+            for (No<T> j = i.getProximo(); j != null; j = j.getProximo()) {
+                Musica musicaI = (Musica) i.getDado();
+                Musica musicaJ = (Musica) j.getDado();
+                String val1 = porTitulo ? musicaI.getTitulo() : musicaI.getArtista();
+                String val2 = porTitulo ? musicaJ.getTitulo() : musicaJ.getArtista();
 
                 if (val1.compareToIgnoreCase(val2) > 0) {
-                    Musica aux = i.getDado();
+                    T aux = i.getDado();
                     i.setDado(j.getDado());
                     j.setDado(aux);
                 }
