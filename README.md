@@ -69,7 +69,7 @@ Cada nó da lista armazena:
 -   Título da música;
 -   Artista;
 -   Álbum;
--   Duração.
+-   Duração em segundos.
 
 A lista possui referências para o início e o fim e mantém a indicação da
 música atual, permitindo a navegação nos dois sentidos.
@@ -80,7 +80,7 @@ música atual, permitindo a navegação nos dois sentidos.
 -   Adicionar no início;
 -   Adicionar no fim;
 -   Adicionar em uma posição específica;
--   Remover música;
+-   Remover música por posição ou título;
 -   Listar músicas;
 -   Avançar para a próxima música;
 -   Voltar para a música anterior;
@@ -133,6 +133,10 @@ Os casos críticos considerados incluem:
 -   remoção do último elemento;
 -   remoção de elemento no meio da lista.
 
+A duração é informada em segundos, conforme o enunciado. A remoção pode
+ser realizada por posição ou pelo título da música, sem diferenciar letras
+maiúsculas e minúsculas.
+
 ------------------------------------------------------------------------
 
 ## 3.4 Evidências de Execução
@@ -148,7 +152,7 @@ pendentes na fila.
 **Figura 1 - Inserção e exibição dos pedidos pendentes.**
 
 ![Figura 1 - Inserção e exibição dos pedidos
-pendentes](./Figura1_Fila.png)
+pendentes](./src/Screenshots/Figura1_Fila.png)
 
 ### Exercício 1 - Pilha de pedidos cancelados
 
@@ -158,7 +162,7 @@ transferência da fila para a pilha de pedidos cancelados.
 **Figura 2 - Cancelamento e exibição dos pedidos cancelados.**
 
 ![Figura 2 - Cancelamento e exibição dos pedidos
-cancelados](./Figura2_Pilha.png)
+cancelados](./src/Screenshots/Figura2_Pilha.png)
 
 ### Exercício 1 - Restauração
 
@@ -168,7 +172,7 @@ pendentes.
 
 **Figura 3 - Restauração de pedido e resultado final.**
 
-![Figura 3 - Restauração de pedido](./Figura3_Restauracao.png)
+![Figura 3 - Restauração de pedido](./src/Screenshots/Figura3_Restauracao.png)
 
 As execuções demonstram os comportamentos FIFO da fila e LIFO da pilha,
 além da comunicação entre as duas estruturas durante as operações de
@@ -181,7 +185,7 @@ exibição na ordem atual.
 
 **Figura 4 - Exibição das músicas da playlist.**
 
-![Figura 4 - Exibição da playlist](./Figura4_Playlist.png)
+![Figura 4 - Exibição da playlist](./src/Screenshots/Figura4_Playlist.png)
 
 ### Exercício 2 - Navegação e reprodução
 
@@ -190,7 +194,7 @@ reprodução da música atualmente selecionada.
 
 **Figura 5 - Navegação e reprodução da música atual.**
 
-![Figura 5 - Navegação e reprodução](./Figura5_Navegacao.png)
+![Figura 5 - Navegação e reprodução](./src/Screenshots/Figura5_Navegacao.png)
 
 ### Exercício 2 - Ordenação e remoção
 
@@ -199,7 +203,7 @@ playlist, incluindo a ordenação e a remoção de músicas.
 
 **Figura 6 - Ordenação e remoção de músicas.**
 
-![Figura 6 - Ordenação e remoção](./Figura6_Ordenacao.png)
+![Figura 6 - Ordenação e remoção](./src/Screenshots/Figura6_Ordenacao.png)
 
 As evidências apresentadas comprovam a execução das principais
 funcionalidades desenvolvidas nos dois exercícios e demonstram o
