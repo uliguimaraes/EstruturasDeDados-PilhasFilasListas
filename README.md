@@ -4,7 +4,7 @@
 * **Curso:** Análise e Desenvolvimento de Sistemas
 * **Disciplina:** Estrutura de Dados
 * **Professor:** Juliano Ramos Matos
-* **Aluno(a):** [Seu Nome Aqui]
+* **Aluno(a):** Ulisses "Kakaroto" Guimarães
 
 ---
 
